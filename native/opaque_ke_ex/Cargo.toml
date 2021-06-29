@@ -1,0 +1,18 @@
+[package]
+name = "opaque_ke_ex"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+[lib]
+name = "opaque_ke_ex"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.22.0"
+opaque-ke = {version = "0.5.0", features = ["slow-hash"]} 
+curve25519-dalek = "3"
+sha2 = "0.9.5"
+scrypt = { version = "0.5.0" }
+rand = "0.8.4"
