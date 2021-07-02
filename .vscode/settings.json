@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "native/opaque_ke_ex/Cargo.toml"
+    ]
+}

@@ -1,6 +1,6 @@
 use crate::ciphersuite::Default;
 use crate::errors::OpaqueError;
-use opaque_ke::{ClientLogin, ClientLoginStartParameters, CredentialResponse, ClientLoginFinishParameters};
+use opaque_ke::{ClientLogin, CredentialResponse, ClientLoginFinishParameters};
 use rand::rngs::OsRng;
 
 #[derive(rustler::NifStruct)]
@@ -22,7 +22,7 @@ pub struct ClientLoginFinish {
 #[rustler::nif]
 pub fn client_login_start(password: &str) -> Result<ClientLoginStartResult, OpaqueError> {
     let mut rng = OsRng;
-    let res = ClientLogin::<Default>::start(&mut rng, password.as_bytes(), ClientLoginStartParameters::default())?;
+    let res = ClientLogin::<Default>::start(&mut rng, password.as_bytes())?;
 
     Ok(ClientLoginStartResult {
         state: res.state.serialize(),
